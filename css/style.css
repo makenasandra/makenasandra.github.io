@@ -1310,8 +1310,9 @@ a:focus {
 }
 
 .contact .container-fluid {
-    background: url(../img/contact.jpg) left center no-repeat;
-    background-size: contain;
+    background: #EF233C;
+    /* background: url(../img/contact.jpg) left center no-repeat; */
+    /* background-size: contain; */
 }
 
 .contact .contact-form {
