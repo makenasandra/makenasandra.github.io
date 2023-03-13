@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Checkout - Forever Healthy - Advanced</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Free Website Template" name="keywords" />
+    <meta content="Free Website Template" name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Libraries -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+
+  <body data-spy="scroll" data-target=".navbar" data-offset="51">
+
+
+    <!-- Hero Start -->
+    <div class="hero" id="home">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-sm-12 col-md-6">
+            <div class="hero-content">
+              <div class="hero-text">
+
+                <h1>Forever Healthy</h1>
+
+               
+              </div>
+              <div class="hero-btn">
+              
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <!-- Hero End -->
+
+    <!-- About Start -->
+
+    <div>
+
+      <div class="container-fluid">
+        <div class="row align-items-center">
+         
+          <div class="about-content">
+            <div class="section-header text-center">
+              <h2>Almost There! One More Step Left</h2>
+              <p></p>
+              <h1></h1>
+              <h5> 
+                  <p></p> This Program will help you lose the excess body fat and keep it off for good!<p></p>
+              </h5>
+              <h6></h6>
+            </div>
+    
+            <div id="smart-button-container">
+              <div style="text-align: center;">
+                <div id="paypal-button-container"></div>
+              </div>
+            </div>
+
+          </div> 
+          
+
+        </div>
+      </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Footer Start -->
+    <div class="footer wow fadeIn" data-wow-delay="0.3s">
+      <div class="container-fluid">
+
+        <div class="container copyright">
+          <p>
+            <a href="#">Makena Sandra</a> &copy; 2022 All Rights Reserved 
+         
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Pre Loader -->
+    <div id="loader" class="show">
+      <div class="loader"></div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/typed/typed.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Paypal Checkout Code Start-->
+
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+    <script>
+      function initPayPalButton() {
+        paypal.Buttons({
+          style: {
+            shape: 'pill',
+            color: 'silver',
+            layout: 'vertical',
+            label: 'pay',
+            
+          },
+
+          createOrder: function(data, actions) {
+            return actions.order.create({
+              purchase_units: [{"description":"Forever Healthy - Advanced Option","amount":{"currency_code":"USD","value":99}}]
+            });
+          },
+
+          onApprove: function(data, actions) {
+            return actions.order.capture().then(function(orderData) {
+              
+              // Full available details
+              console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+              // Show a success message within this page, e.g.
+              const element = document.getElementById('paypal-button-container');
+              element.innerHTML = '';
+              element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+              // Or go to another URL:  actions.redirect('thank_you.html');
+              
+            });
+          },
+
+          onError: function(err) {
+            console.log(err);
+          }
+        }).render('#paypal-button-container');
+      }
+      initPayPalButton();
+    </script>
+
+    <!-- Paypal Checkout Code End-->
+
+  </body>
+</html>
