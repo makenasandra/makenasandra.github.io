@@ -1590,3 +1590,10 @@ a:focus {
         padding: 0 5px;
     }
 }
+
+/* Psuedo-element before list item */
+ul {
+    list-style: '\2713';
+    
+  }
+

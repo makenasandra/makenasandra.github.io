@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Checkout - Power Session - Special Offer</title>
+    <title>Checkout - Custom Meal Plan - Special Offer</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="Free Website Template" name="keywords" />
     <meta content="Free Website Template" name="description" />
@@ -31,6 +31,8 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+
+    <style>h5{text-align: left;} </style>
   </head>
 
   <body data-spy="scroll" data-target=".navbar" data-offset="51">
@@ -44,7 +46,7 @@
             <div class="hero-content">
               <div class="hero-text">
 
-                <h1>Book Power Session</h1>
+                <h1>Get Custom Meal Plan</h1>
 
                
               </div>
@@ -71,11 +73,20 @@
               <h2>Almost There! One More Step Left</h2>
               <p></p>
               <h1></h1>
-              <h5> 
-                  This Power Session will help start you on the right path to achieving your health and fitness goals
-              </h5>
-              <h6>Session Duration: 30 minutes</h6>
-              <h6>Cost: Only $29.99 vs <s>$99</s></h6>
+
+              <div class="about-text">
+                <h5>Book a Session Right Now. In this session I will help you create a custom meal plan that will:
+                  <ul>
+                    <li><b>Meet your specific needs</b>  </li>
+                    <li><b>Enable you to achieve your health & fitness goals</b> </li>
+                    <li><b>Factor in your allergies</b>  - exclude food you're allergic to</li> 
+                  <li><b>Factor in your food preferences</b>  - include food you like & exclude food you dislike</li> 
+                  </ul>        
+                </h5>
+      
+              </div>
+            
+              <h6>Price: $49 vs <s>$297</s></h6>
             </div>
     
             <div id="smart-button-container">
@@ -131,47 +142,47 @@
 
     <!-- Paypal Checkout Code Start-->
 
-    <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
-    <script>
-      function initPayPalButton() {
-        paypal.Buttons({
-          style: {
-            shape: 'pill',
-            color: 'silver',
-            layout: 'vertical',
-            label: 'pay',
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+  <script>
+    function initPayPalButton() {
+      paypal.Buttons({
+        style: {
+          shape: 'rect',
+          color: 'silver',
+          layout: 'vertical',
+          label: 'pay',
+          
+        },
+
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{"description":"Custom Meal Plan - Special Offer","amount":{"currency_code":"USD","value":27}}]
+          });
+        },
+
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(orderData) {
             
-          },
+            // Full available details
+            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
 
-          createOrder: function(data, actions) {
-            return actions.order.create({
-              purchase_units: [{"description":"Power Session Special Offer from Free Meal Plan Download","amount":{"currency_code":"USD","value":7}}]
-            });
-          },
+            // Show a success message within this page, e.g.
+            const element = document.getElementById('paypal-button-container');
+            element.innerHTML = '';
+            element.innerHTML = '<h3>Thank you for your payment!</h3>';
 
-          onApprove: function(data, actions) {
-            return actions.order.capture().then(function(orderData) {
-              
-              // Full available details
-              console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+            // Or go to another URL:  actions.redirect('thank_you.html');
+            
+          });
+        },
 
-              // Show a success message within this page, e.g.
-              const element = document.getElementById('paypal-button-container');
-              element.innerHTML = '';
-              element.innerHTML = '<h3>Thank you for your payment!</h3>';
-
-              // Or go to another URL:  actions.redirect('thank_you.html');
-              
-            });
-          },
-
-          onError: function(err) {
-            console.log(err);
-          }
-        }).render('#paypal-button-container');
-      }
-      initPayPalButton();
-    </script>
+        onError: function(err) {
+          console.log(err);
+        }
+      }).render('#paypal-button-container');
+    }
+    initPayPalButton();
+  </script>
 
     <!-- Paypal Checkout Code End-->
 
